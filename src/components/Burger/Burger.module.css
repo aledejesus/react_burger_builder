@@ -4,3 +4,7 @@
   margin: auto;
   padding-top: 1em;
 }
+
+.build-message {
+  text-align: center;
+}
