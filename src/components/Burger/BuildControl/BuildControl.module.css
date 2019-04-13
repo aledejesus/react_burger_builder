@@ -1,0 +1,17 @@
+.build-control {
+  width: 200px;
+  margin: 0.125em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.build-control > span {
+  width: 100px;
+}
+
+.build-control > input {
+  width: 20px;
+  appearance: textfield;
+  text-align: center;
+}

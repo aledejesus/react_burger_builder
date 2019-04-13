@@ -1,0 +1,11 @@
+.build-controls {
+  width: 100%;
+  max-width: 450px;
+  padding: 1em;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: orange;
+}
