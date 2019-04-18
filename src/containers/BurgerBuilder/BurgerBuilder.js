@@ -15,25 +15,53 @@ class BurgerBuilder extends Component {
   };
 
   addIngredientHandler = (type) => {
-      return 'yes';
+    this.setState((state, props) => {
+      const ingredientsCopy = {...state.ingredients};
+      ingredientsCopy[type] += 1;
+      return {ingredients: ingredientsCopy};
+    });
   };
 
   removeIngredientHandler = (type) => {
-    return 'yes';
+    if (this.state.ingredients[type] > 0) {
+      this.setState((state, props) => {
+        const ingredientsCopy = {...state.ingredients};
+        ingredientsCopy[type] -= 1;
+        return {ingredients: ingredientsCopy};
+      });
+    }
   };
 
   changeIngredientAmountHandler = (type, amount) => {
-    return 'yes'
+    amount = parseInt(amount);
+    if (amount >= 0) {
+      this.setState((state, props) => {
+        const ingredientsCopy = {...state.ingredients};
+        ingredientsCopy[type] = amount;
+        return {ingredients: ingredientsCopy};
+      });
+    }
   };
 
   render () {
+    const disabledLessButtons = {...this.state.ingredients};
+
+    for (let ing in this.state.ingredients) {
+      if (this.state.ingredients[ing] > 0) {
+        disabledLessButtons[ing] = false;
+      }
+      else {
+        disabledLessButtons[ing] = true;
+      }
+    }
     return (
       <Aux>
         <BuildControls
           ingredients={this.state.ingredients}
           addIngredient={this.addIngredientHandler}
           removeIngredient={this.removeIngredientHandler}
-          changeIngredientAmount={this.changeIngredientAmountHandler} />
+          changeIngredientAmount={this.changeIngredientAmountHandler}
+          disabledLessButtons={disabledLessButtons} />
         <Burger ingredients={this.state.ingredients} />
       </Aux>
     );

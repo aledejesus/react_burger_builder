@@ -13,7 +13,8 @@ const buildControls = (props) => {
         value={props.ingredients[ing]}
         addIngredient={() => props.addIngredient(ing)}
         removeIngredient={() => props.removeIngredient(ing)}
-        changeIngredientAmount={props.changeIngredientAmount} />);
+        changeIngredientAmount={(event) => props.changeIngredientAmount(ing, event.target.value)}
+        disabledLessButton={props.disabledLessButtons[ing]} />);
   }
 
   return (
